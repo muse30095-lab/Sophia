@@ -158,7 +158,9 @@
       color:#dde3ff;
       opacity:0;
       transform:translateY(18px);
-      animation:fadeInUp 0.9s ease-out 0.6s forwards;
+      animation:
+        fadeInUp 0.9s ease-out 0.6s forwards,
+        softGlow 6s ease-in-out 1.4s infinite alternate;
     }
 
     .section-title{
@@ -179,7 +181,7 @@
       animation:fadeInUp 0.9s ease-out 0.7s forwards;
     }
 
-    /* PROFILE CARD – как было */
+    /* PROFILE CARD – как было + свечение */
     .card{
       background:rgba(7,18,40,0.9);
       border-radius:16px;
@@ -190,6 +192,7 @@
       font-size:14px;
       line-height:1.7;
       color:#dde3ff;
+      animation:softGlow 7s ease-in-out 1.8s infinite alternate;
     }
 
     .profile-list{
@@ -251,6 +254,20 @@
       }
       100%{
         text-shadow:0 0 4px rgba(160,200,255,0.4);
+      }
+    }
+    @keyframes softGlow{
+      0%{
+        box-shadow:0 18px 40px rgba(2,6,23,0.75);
+        transform:translateY(0);
+      }
+      50%{
+        box-shadow:0 26px 55px rgba(90,140,255,0.60);
+        transform:translateY(-2px);
+      }
+      100%{
+        box-shadow:0 20px 44px rgba(2,6,23,0.82);
+        transform:translateY(0);
       }
     }
   </style>
