@@ -25,7 +25,12 @@
       opacity:0;
       animation:fadeIn 0.6s ease-out 0.1s forwards;
     }
-    .logo{font-size:24px;letter-spacing:0.3em;text-transform:uppercase;}
+    .logo{
+      font-size:26px;           /* было 24px */
+      font-weight:600;          /* немного жирнее */
+      letter-spacing:0.3em;
+      text-transform:uppercase;
+    }
     .nav-links{display:flex;flex-wrap:wrap;gap:10px;}
     .nav-links a{
       color:#e4e7ef;text-decoration:none;font-size:12px;letter-spacing:0.16em;
@@ -45,12 +50,16 @@
 
     /* titles */
     h1{
-      font-size:32px;letter-spacing:0.18em;text-transform:uppercase;
-      margin:0 0 10px;color:#f5f5ff;
+      font-size:36px;                 /* чуть крупнее */
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      margin:40px 0 10px;             /* опустили примерно на 3 см */
+      color:#f5f5ff;
       opacity:0;
       transform:translateY(12px);
       animation:fadeInUp 0.7s ease-out 0.25s forwards;
     }
+
     .subtitle{
       font-size:15px;color:#cfd4ef;max-width:760px;
       line-height:1.7;margin-bottom:20px;
@@ -59,7 +68,7 @@
       animation:fadeInUp 0.7s ease-out 0.35s forwards;
     }
 
-    /* (старый большой hero-бокс оставлен на будущее, но сейчас не используется напрямую) */
+    /* (старый hero-бокс оставлен на будущее, сейчас не используется напрямую) */
     .hero-image-box{
       margin-top:20px;
       margin-bottom:28px;
@@ -123,13 +132,14 @@
     .hero-inner-multi{
       display:flex;
       justify-content:center;
+      align-items:flex-end;      /* выравниваем по нижней линии */
       gap:26px;
       padding:30px 20px;
       position:relative;
       z-index:2;
     }
 
-    /* базовый стиль для всех трёх */
+    /* базовый стиль (широкие карточки) */
     .hero-inner-multi img{
       object-fit:cover;
       border-radius:20px;
@@ -140,18 +150,18 @@
       transition:0.25s;
     }
 
-    /* Фото 1 — более высокое, чтобы видно голову и ноги */
-    .hero-inner-multi img:nth-child(1){
+    /* 1 и 2 — широкие */
+    .hero-inner-multi img:nth-child(1),
+    .hero-inner-multi img:nth-child(2){
+      width:320px;
+      height:260px;
+    }
+
+    /* 3 — портрет, выше, стоит справа */
+    .hero-inner-multi img:nth-child(3){
       width:260px;
       height:360px;
       object-position:top;
-    }
-
-    /* Фото 2 и 3 — более широкие, глянцевые */
-    .hero-inner-multi img:nth-child(2),
-    .hero-inner-multi img:nth-child(3){
-      width:320px;
-      height:260px;
     }
 
     .hero-inner-multi img:hover{
@@ -179,7 +189,7 @@
       margin:0 0 10px;
     }
 
-    /* LEFT big text block with glow */
+    /* LEFT text */
     .left-text{
       background:rgba(7,18,40,0.9);
       border-radius:18px;
@@ -209,7 +219,6 @@
       animation:fadeInUp 0.9s ease-out 0.7s forwards;
     }
 
-    /* Profile card */
     .card{
       background:rgba(7,18,40,0.9);
       border-radius:16px;
@@ -296,7 +305,6 @@
 </head>
 
 <body>
-  <!-- маленький плеер в левом нижнем углу -->
   <audio controls loop style="position:fixed; bottom:20px; left:20px; z-index:1000; opacity:0.9;">
     <source src="music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -318,15 +326,14 @@
 
     <h1>About me</h1>
 
-    <!-- ГОРИЗОНТАЛЬНЫЙ РЯД ИЗ 3 ФОТО -->
+    <!-- ГОРИЗОНТАЛЬНЫЙ РЯД ИЗ 3 ФОТО: 2 широких слева, портрет справа -->
     <div class="hero-inner-multi">
-      <img src="about-1.JPG" alt="Sophia photo 1">
       <img src="about-2.JPG" alt="Sophia photo 2">
       <img src="about-3.JPG" alt="Sophia photo 3">
+      <img src="about-1.JPG" alt="Sophia photo 1">
     </div>
 
     <section class="about-layout">
-      <!-- ЛЕВЫЙ СТОЛБИК: текст о себе -->
       <div class="left-text">
         <h2 class="section-title">Story</h2>
         <p>
@@ -373,63 +380,23 @@
         </p>
       </div>
 
-      <!-- ПРАВЫЙ СТОЛБИК: профиль -->
       <div class="right-column">
         <div class="card">
           <h2 class="section-title">Profile</h2>
           <ul class="profile-list">
-            <li>
-              <span class="profile-label">Nationality</span>
-              <span class="profile-value">Slavic</span>
-            </li>
-            <li>
-              <span class="profile-label">Languages spoken</span>
-              <span class="profile-value">English, Russian</span>
-            </li>
-            <li>
-              <span class="profile-label">Education</span>
-              <span class="profile-value">University</span>
-            </li>
-            <li>
-              <span class="profile-label">Hair color</span>
-              <span class="profile-value">Blonde</span>
-            </li>
-            <li>
-              <span class="profile-label">Eye color</span>
-              <span class="profile-value">Brown</span>
-            </li>
-            <li>
-              <span class="profile-label">Height</span>
-              <span class="profile-value">5'9&quot; (174 cm)</span>
-            </li>
-            <li>
-              <span class="profile-label">Weight</span>
-              <span class="profile-value">55 kg</span>
-            </li>
-            <li>
-              <span class="profile-label">Smoking</span>
-              <span class="profile-value">No</span>
-            </li>
-            <li>
-              <span class="profile-label">Dress size</span>
-              <span class="profile-value">S</span>
-            </li>
-            <li>
-              <span class="profile-label">Measurements</span>
-              <span class="profile-value">34B</span>
-            </li>
-            <li>
-              <span class="profile-label">Panties</span>
-              <span class="profile-value">S</span>
-            </li>
-            <li>
-              <span class="profile-label">Garter belt</span>
-              <span class="profile-value">S</span>
-            </li>
-            <li>
-              <span class="profile-label">Foot size</span>
-              <span class="profile-value">38.5–39 (US 9)</span>
-            </li>
+            <li><span class="profile-label">Nationality</span><span class="profile-value">Slavic</span></li>
+            <li><span class="profile-label">Languages spoken</span><span class="profile-value">English, Russian</span></li>
+            <li><span class="profile-label">Education</span><span class="profile-value">University</span></li>
+            <li><span class="profile-label">Hair color</span><span class="profile-value">Blonde</span></li>
+            <li><span class="profile-label">Eye color</span><span class="profile-value">Brown</span></li>
+            <li><span class="profile-label">Height</span><span class="profile-value">5'9&quot; (174 cm)</span></li>
+            <li><span class="profile-label">Weight</span><span class="profile-value">55 kg</span></li>
+            <li><span class="profile-label">Smoking</span><span class="profile-value">No</span></li>
+            <li><span class="profile-label">Dress size</span><span class="profile-value">S</span></li>
+            <li><span class="profile-label">Measurements</span><span class="profile-value">34B</span></li>
+            <li><span class="profile-label">Panties</span><span class="profile-value">S</span></li>
+            <li><span class="profile-label">Garter belt</span><span class="profile-value">S</span></li>
+            <li><span class="profile-label">Foot size</span><span class="profile-value">38.5–39 (US 9)</span></li>
           </ul>
         </div>
       </div>
