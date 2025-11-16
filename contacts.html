@@ -1,123 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Contacts – Sophia</title>
-<style>
-  body {
-    margin:0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0b1020, #071a2e);
-    color:#e4e7ef;
-    padding:40px;
-  }
-  h1 { font-size:36px; margin-bottom:10px; letter-spacing:2px; }
-  .topnav a {
-    color:#e4e7ef; margin-right:22px; text-decoration:none;
-    font-size:14px; letter-spacing:1px; text-transform:uppercase;
-  }
-  .topnav { margin-bottom:40px; }
+  <meta charset="UTF-8">
+  <title>Contacts – Sophia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  .contact-box {
-    padding:20px 30px; background:rgba(255,255,255,0.05);
-    border-radius:12px; margin-bottom:25px;
-    backdrop-filter: blur(6px);
-  }
-  .contact-label { font-size:13px; opacity:0.7; }
-  .contact-value { font-size:18px; margin-top:4px; }
+  <style>
+    body {
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left,#0b1020,#071a2e);
+      color:#e4e7ef;
+      padding:40px 20px 60px;
+    }
 
-  .contact-form input {
-    width:100%; padding:12px; margin-bottom:14px;
-    border-radius:8px; border:none;
-    background:rgba(255,255,255,0.07); color:#fff;
-  }
-  .form-row {
-    display:flex; gap:16px;
-  }
-  .form-row input { flex:1; }
+    .page {
+      max-width:1080px;
+      margin:0 auto;
+    }
 
-  .send-btn {
-    padding:14px 26px;
-    background:#1f6feb;
-    border:none; border-radius:8px;
-    font-size:16px; color:white;
-    cursor:pointer;
-  }
-</style>
+    /* top navigation */
+    .topnav {
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:32px;
+    }
+
+    .logo {
+      font-size:24px;
+      letter-spacing:0.3em;
+      text-transform:uppercase;
+    }
+
+    .nav-links {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .nav-links a {
+      color:#e4e7ef;
+      text-decoration:none;
+      font-size:12px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      padding:6px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.18);
+      background:rgba(255,255,255,0.04);
+      transition:background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      background:rgba(255,255,255,0.18);
+      box-shadow:0 0 14px rgba(120,170,255,0.45);
+      transform:translateY(-1px);
+    }
+
+    .nav-links a.current {
+      background:rgba(255,255,255,0.22);
+      box-shadow:0 0 18px rgba(120,170,255,0.55);
+    }
+
+    h1 {
+      font-size:32px;
+      margin:8px 0 8px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+    }
+
+    .subtitle {
+      font-size:15px;
+      color:#cfd4ef;
+      margin-bottom:26px;
+      max-width:720px;
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap:26px;
+    }
+
+    @media (max-width:860px) {
+      .grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+      body {
+        padding-inline:16px;
+      }
+      .topnav {
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+      }
+    }
+
+    .card {
+      background:rgba(7,18,40,0.88);
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.12);
+      padding:22px 24px 24px;
+      box-shadow:0 18px 40px rgba(2,6,23,0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .label {
+      font-size:11px;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color:#a4aacb;
+      margin-bottom:6px;
+    }
+
+    .value {
+      font-size:16px;
+    }
+
+    .value a {
+      color:#f4f7ff;
+      text-decoration:none;
+    }
+    .value a:hover {
+      text-decoration:underline;
+    }
+
+    .rules-list {
+      list-style:none;
+      padding-left:0;
+      margin:0;
+      font-size:14px;
+      line-height:1.7;
+      color:#dde3ff;
+    }
+
+    .rules-list li::before {
+      content:"• ";
+      color:#8fb1ff;
+    }
+
+    .section-title {
+      font-size:18px;
+      margin:0 0 10px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:#dfe4ff;
+    }
+
+    /* form */
+
+    .form-title {
+      font-size:18px;
+      margin:0 0 12px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:#dfe4ff;
+    }
+
+    .contact-form {
+      margin-top:10px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .form-row {
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:14px;
+    }
+
+    @media (max-width:640px) {
+      .form-row {
+        grid-template-columns:minmax(0,1fr);
+      }
+    }
+
+    .contact-form input {
+      padding:11px 12px;
+      border-radius:9px;
+      border:1px solid rgba(255,255,255,0.2);
+      background:rgba(10,18,40,0.9);
+      color:#f4f7ff;
+      font-size:14px;
+      letter-spacing:0.03em;
+      outline:none;
+      transition:border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-form input::placeholder {
+      color:#a9b0d0;
+    }
+
+    .contact-form input:focus {
+      border-color:#7fb0ff;
+      box-shadow:0 0 10px rgba(127,176,255,0.5);
+      background:rgba(10,18,40,1);
+    }
+
+    .error-message {
+      font-size:12px;
+      color:#ff9b9b;
+      margin-top:-6px;
+    }
+
+    .send-btn {
+      margin-top:6px;
+      align-self:flex-start;
+      padding:13px 30px;
+      border-radius:999px;
+      border:1px solid rgba(178,206,255,0.8);
+      background:linear-gradient(135deg,#2d5bff,#6ea6ff);
+      color:white;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.18em;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 14px 30px rgba(15,23,42,0.75);
+      transition:transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .send-btn::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 0% 0%,rgba(255,255,255,0.4),transparent 55%);
+      opacity:0;
+      transform:translateX(-40%);
+      transition:opacity 0.35s ease, transform 0.35s ease;
+      pointer-events:none;
+    }
+
+    .send-btn:hover {
+      transform:translateY(-1px);
+      box-shadow:0 18px 40px rgba(37,99,235,0.65);
+    }
+
+    .send-btn:hover::before {
+      opacity:1;
+      transform:translateX(40%);
+    }
+
+    .send-btn:active {
+      transform:translateY(0);
+      box-shadow:0 10px 22px rgba(15,23,42,0.7);
+    }
+
+    .form-note {
+      font-size:12px;
+      color:#c0c7e5;
+      margin-top:8px;
+    }
+
+    .global-error {
+      margin-top:6px;
+      font-size:13px;
+      color:#ffb3b3;
+      display:none;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="page">
 
-<div class="topnav">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="location.html">Location</a>
-  <a href="wishlist.html">Wishlist</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="contacts.html" style="opacity:0.6;">Contacts</a>
-</div>
+    <div class="topnav">
+      <div class="logo">SOPHIA</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="formats.html">Formats</a>
+        <a href="location.html">Location</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="contacts.html" class="current">Contacts</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+    </div>
 
-<h1>Contacts</h1>
-<p>All ways to reach me directly. I value privacy and respond personally.</p>
+    <h1>Contacts</h1>
+    <p class="subtitle">
+      All ways to reach me directly. I value privacy, kindness and calm, respectful communication.
+    </p>
 
-<div class="contact-box">
-  <div class="contact-label">EMAIL</div>
-  <div class="contact-value">sophiausa2025.08@gmail.com</div>
-</div>
+    <div class="grid">
+      <!-- left: contacts -->
+      <div class="card">
+        <h2 class="section-title">Direct contact</h2>
 
-<div class="contact-box">
-  <div class="contact-label">WHATSAPP</div>
-  <div class="contact-value">+1 929 580 7397</div>
-</div>
+        <div style="margin-bottom:14px;">
+          <div class="label">EMAIL</div>
+          <div class="value">
+            <a href="mailto:sophiausa2025.08@gmail.com">sophiausa2025.08@gmail.com</a>
+          </div>
+        </div>
 
-<div class="contact-box">
-  <div class="contact-label">CALL</div>
-  <div class="contact-value">+1 914 655 3426</div>
-</div>
+        <div style="margin-bottom:14px;">
+          <div class="label">WHATSAPP</div>
+          <div class="value">
+            <a href="https://wa.me/19295807397" target="_blank">+1 929 580 7397</a>
+          </div>
+        </div>
 
-<div class="contact-box">
-  <div class="contact-label">PERSONAL SITE</div>
-  <div class="contact-value"><a href="https://tryst.link/escort/sophiausa2025" style="color:#7ab7ff;">Open link</a></div>
-</div>
+        <div style="margin-bottom:14px;">
+          <div class="label">CALL</div>
+          <div class="value">
+            <a href="tel:+19146553426">+1 914 655 3426</a>
+          </div>
+        </div>
 
-<h2>Send Request</h2>
+        <div>
+          <div class="label">PERSONAL LINK</div>
+          <div class="value">
+            <a href="https://tryst.link/escort/sophiausa2025" target="_blank">
+              tryst.link/escort/sophiausa2025
+            </a>
+          </div>
+        </div>
+      </div>
 
-<form class="contact-form" action="https://formspree.io/f/xwpanlna" method="POST">
+      <!-- right: booking rules -->
+      <div class="card">
+        <h2 class="section-title">Booking rules</h2>
+        <ul class="rules-list">
+          <li>Introduce yourself with your name, city and a few words about you.</li>
+          <li>Share your preferred day, time, duration and whether you prefer incall or outcall.</li>
+          <li>New friends may be asked for light screening or a reference for safety.</li>
+          <li>A 20% deposit confirms our time together and is non‑refundable if cancelled within 24 hours.</li>
+          <li>Respectful, generous and discreet behaviour is essential. I do not respond to explicit or rushed messages.</li>
+          <li>All information you share is treated as confidential and used only for our booking.</li>
+        </ul>
+      </div>
+    </div>
 
-  <div class="form-row">
-    <input type="text" name="Full Name" placeholder="Full name" required>
-    <input type="email" name="Email" placeholder="E-mail" required>
+    <!-- form card -->
+    <div class="card" style="margin-top:26px;">
+      <h2 class="form-title">Booking request form</h2>
+      <p class="subtitle" style="margin-top:0; margin-bottom:18px; font-size:14px;">
+        Please complete the form below. A warm, polite message always stands out. I reply personally as soon as I can.
+      </p>
+
+      <form class="contact-form" id="bookingForm" action="https://formspree.io/f/xwpanlna" method="POST" novalidate>
+
+        <div class="form-row">
+          <div>
+            <input type="text" name="Full name" placeholder="Full name *" required minlength="2">
+            <div class="error-message" data-for="Full name"></div>
+          </div>
+          <div>
+            <input type="email" name="Email" placeholder="E-mail *" required>
+            <div class="error-message" data-for="Email"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <input type="text" name="Phone number" placeholder="Phone number *" required pattern="[0-9+()\-\s]{7,}">
+            <div class="error-message" data-for="Phone number"></div>
+          </div>
+          <div>
+            <input type="text" name="Age/Ethnicity" placeholder="Age / Ethnicity *" required>
+            <div class="error-message" data-for="Age/Ethnicity"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <input type="text" name="Preferred day/time" placeholder="Preferred day / time *" required>
+            <div class="error-message" data-for="Preferred day/time"></div>
+          </div>
+          <div>
+            <input type="text" name="Place" placeholder="Place *" required>
+            <div class="error-message" data-for="Place"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <input type="text" name="Duration" placeholder="Duration *" required>
+            <div class="error-message" data-for="Duration"></div>
+          </div>
+          <div>
+            <input type="text" name="Wardrobe request" placeholder="Wardrobe request *" required>
+            <div class="error-message" data-for="Wardrobe request"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <input type="text" name="LinkedIn" placeholder="LinkedIn *" required>
+            <div class="error-message" data-for="LinkedIn"></div>
+          </div>
+          <div>
+            <input type="text" name="Preferred 411" placeholder="Preferred 411 *" required>
+            <div class="error-message" data-for="Preferred 411"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <input type="text" name="Other method" placeholder="Any other method for verification *" required>
+            <div class="error-message" data-for="Other method"></div>
+          </div>
+          <div>
+            <input type="text" name="Found from" placeholder="Where did you find me? *" required>
+            <div class="error-message" data-for="Found from"></div>
+          </div>
+        </div>
+
+        <button type="submit" class="send-btn">Send request</button>
+        <div class="global-error" id="formError">Please check the highlighted fields and try again.</div>
+
+        <p class="form-note">
+          *If you need to share photos or documents, you can send them after this form via e‑mail or WhatsApp.
+        </p>
+      </form>
+    </div>
+
   </div>
 
-  <div class="form-row">
-    <input type="text" name="Phone Number" placeholder="Phone number" required>
-    <input type="text" name="Age/Ethnicity" placeholder="Age/Ethnicity" required>
-  </div>
+  <script>
+    // simple client-side validation
+    const form = document.getElementById('bookingForm');
+    const errorBlocks = document.querySelectorAll('.error-message');
+    const globalError = document.getElementById('formError');
 
-  <div class="form-row">
-    <input type="text" name="Preferred Day/Time" placeholder="Preferred day/Time" required>
-    <input type="text" name="Place" placeholder="Place" required>
-  </div>
+    form.addEventListener('submit', function(e) {
+      let hasError = false;
+      globalError.style.display = 'none';
+      errorBlocks.forEach(b => b.textContent = '');
 
-  <div class="form-row">
-    <input type="text" name="Duration" placeholder="Duration" required>
-    <input type="text" name="Wardrobe Request" placeholder="Wardrobe request" required>
-  </div>
+      const elements = Array.from(form.elements).filter(el => el.tagName === 'INPUT');
 
-  <div class="form-row">
-    <input type="text" name="Linkedin" placeholder="Linkedin" required>
-    <input type="text" name="Preferred 411" placeholder="Preferred 411" required>
-  </div>
+      elements.forEach(input => {
+        const name = input.getAttribute('name');
+        const errorEl = document.querySelector('.error-message[data-for="' + name + '"]');
+        if (!errorEl) return;
 
-  <div class="form-row">
-    <input type="text" name="Other Contact Method" placeholder="Any other method for verification" required>
-    <input type="text" name="Referral Source" placeholder="Where did you find me?" required>
-  </div>
+        if (!input.value.trim()) {
+          hasError = true;
+          errorEl.textContent = 'This field is required.';
+        } else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) {
+          hasError = true;
+          errorEl.textContent = 'Please enter a valid e-mail.';
+        } else if (input.name === 'Phone number' && !/[0-9]/.test(input.value)) {
+          hasError = true;
+          errorEl.textContent = 'Please enter a valid phone number.';
+        }
+      });
 
-  <button type="submit" class="send-btn">Send</button>
-
-</form>
-
+      if (hasError) {
+        e.preventDefault();
+        globalError.style.display = 'block';
+      }
+      // If no errors, Formspree will handle the submission normally
+    });
+  </script>
 </body>
 </html>
