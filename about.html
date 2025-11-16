@@ -101,6 +101,31 @@
       box-shadow:0 18px 40px rgba(2,6,23,0.9);
       background:rgba(4,10,25,0.85);
 }
+    .hero-inner-multi{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  padding:28px;
+  position:relative;
+  z-index:2;
+}
+
+.hero-inner-multi img{
+  width:240px;
+  height:240px;
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 18px 40px rgba(2,6,23,0.85);
+  opacity:0;
+  transform:translateY(14px);
+  animation:fadeInUp 0.8s ease-out 0.5s forwards;
+  transition:0.25s;
+}
+
+.hero-inner-multi img:hover{
+  transform:translateY(-3px);
+  box-shadow:0 26px 55px rgba(100,145,255,0.65);
+}
 
 .hero-inner img{
       width:100%;
@@ -354,13 +379,12 @@
 
     <h1>About me</h1>
    
-    <!-- БОЛЬШАЯ ФОТО НАД ОБЕИМИ СТОЛБЦАМИ -->
-    <div class="hero-image-box">
-  <div class="hero-inner-multi">
+    <!-- ГОРИЗОНТАЛЬНЫЙ РЯД ИЗ 3 ФОТО -->
+<div class="hero-inner-multi">
     <img src="about-1.jpg" alt="Sophia photo 1">
     <img src="about-2.jpg" alt="Sophia photo 2">
     <img src="about-3.jpg" alt="Sophia photo 3">
-  </div>
+</div>
 </div>
 
 
