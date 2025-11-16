@@ -11,13 +11,13 @@
       font-family:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",sans-serif;
       background:radial-gradient(circle at top left,#0b1020,#071a2e);
       color:#e4e7ef;
-      padding:40px 20px 60px;
+      padding:20px 20px 40px;   /* ← фикс: вернули страницу вниз */
       overflow-x:hidden;
     }
 
     .page{max-width:1080px;margin:0 auto;}
 
-    /* top nav */
+    /* TOP NAV */
     .topnav{
       display:flex;flex-wrap:wrap;gap:16px;
       align-items:center;justify-content:space-between;
@@ -25,12 +25,14 @@
       opacity:0;
       animation:fadeIn 0.6s ease-out 0.1s forwards;
     }
+
     .logo{
-      font-size:28px;           /* было 24px */
-      font-weight:600;          /* немного жирнее */
+      font-size:26px;         /* чуть крупнее */
+      font-weight:600;        /* чуть жирнее */
       letter-spacing:0.32em;
       text-transform:uppercase;
     }
+
     .nav-links{display:flex;flex-wrap:wrap;gap:10px;}
     .nav-links a{
       color:#e4e7ef;text-decoration:none;font-size:12px;letter-spacing:0.16em;
@@ -48,128 +50,77 @@
       box-shadow:0 0 18px rgba(120,170,255,0.55);
     }
 
-    /* titles */
+    /* ABOUT ME title */
     h1{
-      font-size:42px;                 /* чуть крупнее */
+      font-size:42px;
       letter-spacing:0.22em;
       text-transform:uppercase;
-      margin:80px 0 30px;/* опустили примерно на 3 см */
+      margin:36px 0 26px;      /* заголовок ближе к фото */
       color:#f5f5ff;
       opacity:0;
       transform:translateY(12px);
       animation:fadeInUp 0.7s ease-out 0.25s forwards;
     }
 
-    .subtitle{
-      font-size:15px;color:#cfd4ef;max-width:760px;
-      line-height:1.7;margin-bottom:20px;
-      opacity:0;
-      transform:translateY(10px);
-      animation:fadeInUp 0.7s ease-out 0.35s forwards;
-    }
-
-    /* (старый hero-бокс оставлен на будущее, сейчас не используется напрямую) */
-    .hero-image-box{
-      margin-top:20px;
-      margin-bottom:28px;
-      border-radius:20px;
-      background:radial-gradient(circle at top,#253a85,#0b1020 60%);
-      border:1px solid rgba(255,255,255,0.18);
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 24px 50px rgba(2,6,23,0.85);
-      animation:softGlow 6s ease-in-out 0.4s infinite alternate;
-      opacity:0;
-      transform:translateY(14px);
-      animation-name:fadeInUp, softGlow;
-      animation-duration:0.8s, 6s;
-      animation-delay:0.4s, 1.0s;
-      animation-timing-function:ease-out, ease-in-out;
-      animation-fill-mode:forwards, both;
-      animation-iteration-count:1, infinite;
-    }
-
-    .hero-image-box::before{
-      content:"";
-      position:absolute;
-      inset:-10%;
-      background:
-        radial-gradient(circle at 0% 0%,rgba(122,183,255,0.45),transparent 60%),
-        radial-gradient(circle at 100% 80%,rgba(97,145,255,0.35),transparent 60%);
-      opacity:0.9;
-      mix-blend-mode:screen;
-      pointer-events:none;
-    }
-
-    .hero-inner{
-      position:relative;
-      z-index:1;
-      max-width:380px;
-      margin:26px auto 28px;
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:0 18px 40px rgba(2,6,23,0.9);
-      background:rgba(4,10,25,0.85);
-    }
-
-    .hero-inner img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-    .hero-caption{
-      padding:10px 14px 12px;
-      font-size:13px;
-      color:#dfe3ff;
-      text-align:center;
-      letter-spacing:0.12em;
-      text-transform:uppercase;
-      opacity:0.9;
-    }
-
-    /* ГОРИЗОНТАЛЬНАЯ ГЛЯНЦЕВАЯ ЛИНИЯ ИЗ 3 ФОТО */
+    /* GLOSSY PHOTO LINE */
     .hero-inner-multi{
       display:flex;
       justify-content:center;
-      align-items:flex-end;      /* выравниваем по нижней линии */
+      align-items:flex-end;    /* ВЫРОВНЯЛА ПО НИЖНЕЙ ГРАНИЦЕ */
       gap:26px;
-      padding:30px 20px;
+      padding:30px 20px 20px;
       position:relative;
       z-index:2;
+      margin-bottom:20px;
+      margin-top:10px;
     }
 
-    /* базовый стиль (широкие карточки) */
-    .hero-inner-multi img{
+    /* Photo 1 — ШИРОКОЕ */
+    .hero-inner-multi img:nth-child(1){
+      width:330px;
+      height:260px;
       object-fit:cover;
       border-radius:20px;
       box-shadow:0 22px 50px rgba(2,6,23,0.85);
       opacity:0;
       transform:translateY(14px);
-      animation:fadeInUp 0.8s ease-out 0.5s forwards;
+      animation:fadeInUp 0.8s ease-out 0.4s forwards;
       transition:0.25s;
     }
 
-    /* 1 и 2 — широкие */
-    .hero-inner-multi img:nth-child(1),
+    /* Photo 2 — ШИРОКОЕ */
     .hero-inner-multi img:nth-child(2){
-      width:320px;
+      width:330px;
       height:260px;
+      object-fit:cover;
+      border-radius:20px;
+      box-shadow:0 22px 50px rgba(2,6,23,0.85);
+      opacity:0;
+      transform:translateY(14px);
+      animation:fadeInUp 0.8s ease-out 0.55s forwards;
+      transition:0.25s;
     }
 
-    /* 3 — портрет, выше, стоит справа */
+    /* Photo 3 — ВЫСОКОЕ (FULL-BODY) */
     .hero-inner-multi img:nth-child(3){
       width:260px;
-      height:360px;
-      object-position:top;
+      height:380px;
+      object-fit:cover;
+      border-radius:22px;
+      box-shadow:0 25px 55px rgba(2,6,23,0.85);
+      opacity:0;
+      transform:translateY(14px);
+      animation:fadeInUp 0.9s ease-out 0.75s forwards;
+      transition:0.25s;
     }
 
+    /* Hover glossy */
     .hero-inner-multi img:hover{
       transform:translateY(-4px);
-      box-shadow:0 30px 60px rgba(100,145,255,0.55);
+      box-shadow:0 32px 65px rgba(100,145,255,0.55);
     }
 
-    /* layout 70 / 30 */
+    /* LAYOUT 70/30 */
     .about-layout{
       display:grid;
       grid-template-columns:1.7fr 0.9fr;
@@ -181,15 +132,7 @@
       .about-layout{grid-template-columns:1fr;}
     }
 
-    .section-title{
-      font-size:15px;
-      letter-spacing:0.18em;
-      text-transform:uppercase;
-      color:#dfe4ff;
-      margin:0 0 10px;
-    }
-
-    /* LEFT text */
+    /* LEFT TEXT BOX */
     .left-text{
       background:rgba(7,18,40,0.9);
       border-radius:18px;
@@ -202,14 +145,17 @@
       color:#dde3ff;
       opacity:0;
       transform:translateY(18px);
-      animation:
-        fadeInUp 0.9s ease-out 0.6s forwards,
-        softGlow 6s ease-in-out 1.4s infinite alternate;
+      animation:fadeInUp 0.9s ease-out 0.6s forwards;
     }
-    .left-text p{margin:0 0 14px;}
-    .left-text p:last-child{margin-bottom:0;}
 
-    /* RIGHT column */
+    .section-title{
+      font-size:15px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    /* RIGHT COLUMN */
     .right-column{
       display:flex;
       flex-direction:column;
@@ -219,6 +165,7 @@
       animation:fadeInUp 0.9s ease-out 0.7s forwards;
     }
 
+    /* PROFILE CARD */
     .card{
       background:rgba(7,18,40,0.9);
       border-radius:16px;
@@ -229,29 +176,20 @@
       font-size:14px;
       line-height:1.7;
       color:#dde3ff;
-      animation:softGlow 7s ease-in-out 1.6s infinite alternate;
     }
 
     .profile-list{
-      list-style:none;
-      padding:0;
-      margin:6px 0 0;
+      list-style:none;margin:6px 0 0;padding:0;
     }
-    .profile-list li{margin-bottom:4px;}
     .profile-label{
       color:#aeb4d7;
       text-transform:uppercase;
-      letter-spacing:0.14em;
       font-size:11px;
-      display:block;
       margin-bottom:2px;
     }
-    .profile-value{
-      font-size:14px;
-      color:#e6e9ff;
-    }
+    .profile-value{font-size:14px;color:#e6e9ff;}
 
-    /* Booking button */
+    /* BUTTON */
     .booking-wrapper{text-align:center;margin-top:8px;}
     .btn-primary{
       display:inline-block;
@@ -269,48 +207,34 @@
       box-shadow:0 14px 30px rgba(15,23,42,0.75);
       transition:0.22s;
       text-decoration:none;
-      opacity:0;
-      transform:translateY(12px);
-      animation:fadeInUp 0.7s ease-out 0.95s forwards;
     }
+
     .btn-primary:hover{
       transform:translateY(-1px);
       box-shadow:0 18px 40px rgba(37,99,235,0.65);
     }
 
-    /* animations */
-    @keyframes fadeIn {
-      from {opacity:0;}
-      to {opacity:1;}
+    /* Animations */
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
     }
-    @keyframes fadeInUp {
-      from {opacity:0; transform:translateY(18px);}
-      to {opacity:1; transform:translateY(0);}
-    }
-    @keyframes softGlow {
-      0% {
-        box-shadow:0 18px 40px rgba(2,6,23,0.75);
-        transform:translateY(0);
-      }
-      50% {
-        box-shadow:0 26px 55px rgba(90,140,255,0.60);
-        transform:translateY(-2px);
-      }
-      100% {
-        box-shadow:0 20px 44px rgba(2,6,23,0.82);
-        transform:translateY(0);
-      }
+    @keyframes fadeIn{
+      from{opacity:0;}
+      to{opacity:1;}
     }
   </style>
 </head>
 
 <body>
+
   <audio controls loop style="position:fixed; bottom:20px; left:20px; z-index:1000; opacity:0.9;">
     <source src="music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
 
   <div class="page">
+
+    <!-- NAV -->
     <div class="topnav">
       <div class="logo">SOPHIA</div>
       <div class="nav-links">
@@ -324,82 +248,50 @@
       </div>
     </div>
 
-    <h1>About me</h1>
+    <!-- TITLE -->
+    <h1>ABOUT ME</h1>
 
-    <!-- ГОРИЗОНТАЛЬНЫЙ РЯД ИЗ 3 ФОТО: 2 широких слева, портрет справа -->
+    <!-- PHOTO LINE -->
     <div class="hero-inner-multi">
-      <img src="about-2.JPG" alt="Sophia photo 2">
-      <img src="about-3.JPG" alt="Sophia photo 3">
-      <img src="about-1.JPG" alt="Sophia photo 1">
+      <img src="about-2.JPG" alt="Photo 2">
+      <img src="about-3.JPG" alt="Photo 3">
+      <img src="about-1.JPG" alt="Photo 1">
     </div>
 
+    <!-- CONTENT GRID -->
     <section class="about-layout">
+
+      <!-- LEFT TEXT -->
       <div class="left-text">
         <h2 class="section-title">Story</h2>
-        <p>
-          I’m Sophia — a 25-year-old wanderer who followed her curiosity right into the American Wonderland.
-          Think of me as an irresistible, grown-up version of Alice… the one who smiles a little too mysteriously
-          and always knows where the most magical doors are hidden.
-        </p>
-        <p>
-          There’s a touch of mischief in everything I do — a soft glimmer in my eyes, a playful tilt in my voice,
-          a quiet confidence that makes the world around me feel like it’s leaning in to listen.
-          My long, natural hair slips over my shoulders like a whisper, and my graceful lines move with the kind of elegance
-          that invites your imagination to follow.
-        </p>
-        <p>
-          Time behaves strangely around me — it slows down, sweetens, and wraps itself in a warm glow.
-          I love creating moments that feel like stepping into a secret garden: personal, intimate in atmosphere,
-          full of laughter, curiosity, and that flutter of excitement you can’t quite explain.
-        </p>
-        <p>
-          In this American Wonderland, let me be your enchanting guide — the girl who teases reality,
-          tilts the story in unexpected ways, and leaves you wondering how someone so dreamy could be standing right in front of you.
-        </p>
-        <p>
-          I can’t wait to meet you… after all, every Wonderland needs the right person to explore it with.
-        </p>
-        <p>
-          After we spend time together, you’ll feel that delicious, lingering after-glow — like someone slipped a little secret
-          into your day, one only the two of us will recognize.
-        </p>
-        <p>
-          You’ll notice a quiet surge of energy… not loud, not obvious, just that subtle spark that makes the world look a bit brighter
-          and your thoughts a touch bolder.
-        </p>
-        <p>
-          Let’s create memories that resurface unexpectedly — in certain scents, in a melody, in random moments when you catch yourself
-          smiling without knowing why.
-        </p>
-        <p>
-          Those memories will play in your mind with the same mischievous charm I bring everywhere I go — warm, teasing,
-          and just a little too enticing to ignore.
-        </p>
-        <p>
-          And I’ll admit… I can already feel that delicious tension of anticipation, that soft thrill of a story that’s about to begin.
-        </p>
+
+        <p>I’m Sophia — a 25-year-old wanderer who followed her curiosity right into the American Wonderland.</p>
+        <p>Think of me as an irresistible, grown-up version of Alice… the one who smiles a little too mysteriously and always knows where the most magical doors are hidden.</p>
+        <p>There’s a touch of mischief in everything I do — a soft glimmer in my eyes, a playful tilt in my voice.</p>
+        <p>Time behaves strangely around me — it slows down, sweetens, and wraps itself in a warm glow.</p>
+        <p>In this American Wonderland, let me be your enchanting guide — the girl who teases reality and tilts the story in unexpected ways.</p>
+        <p>After we spend time together, you’ll feel that delicious, lingering after-glow — like a secret only we share.</p>
       </div>
 
+      <!-- RIGHT PROFILE -->
       <div class="right-column">
         <div class="card">
           <h2 class="section-title">Profile</h2>
           <ul class="profile-list">
             <li><span class="profile-label">Nationality</span><span class="profile-value">Slavic</span></li>
-            <li><span class="profile-label">Languages spoken</span><span class="profile-value">English, Russian</span></li>
+            <li><span class="profile-label">Languages</span><span class="profile-value">English, Russian</span></li>
             <li><span class="profile-label">Education</span><span class="profile-value">University</span></li>
-            <li><span class="profile-label">Hair color</span><span class="profile-value">Blonde</span></li>
-            <li><span class="profile-label">Eye color</span><span class="profile-value">Brown</span></li>
-            <li><span class="profile-label">Height</span><span class="profile-value">5'9&quot; (174 cm)</span></li>
+            <li><span class="profile-label">Hair</span><span class="profile-value">Blonde</span></li>
+            <li><span class="profile-label">Eyes</span><span class="profile-value">Brown</span></li>
+            <li><span class="profile-label">Height</span><span class="profile-value">174 cm</span></li>
             <li><span class="profile-label">Weight</span><span class="profile-value">55 kg</span></li>
-            <li><span class="profile-label">Smoking</span><span class="profile-value">No</span></li>
-            <li><span class="profile-label">Dress size</span><span class="profile-value">S</span></li>
+            <li><span class="profile-label">Dress</span><span class="profile-value">S</span></li>
             <li><span class="profile-label">Measurements</span><span class="profile-value">34B</span></li>
-            <li><span class="profile-label">Panties</span><span class="profile-value">S</span></li>
-            <li><span class="profile-label">Garter belt</span><span class="profile-value">S</span></li>
-            <li><span class="profile-label">Foot size</span><span class="profile-value">38.5–39 (US 9)</span></li>
+            <li><span class="profile-label">Foot size</span><span class="profile-value">38.5–39</span></li>
           </ul>
         </div>
       </div>
+
     </section>
 
     <div class="booking-wrapper">
