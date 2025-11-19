@@ -99,30 +99,43 @@
       }
     }
 
-   
-/* Подсветка всех карточек в Contacts — как deposit/honorarium */
-.card {
-  background: rgba(7,18,40,0.92) !important;
-  border-radius: 22px;
-  border: 1px solid rgba(255,255,255,0.16) !important;
-  padding: 28px 30px 30px !important;
-  box-shadow: 0 24px 55px rgba(2,6,23,0.8) !important;
-  backdrop-filter: blur(10px);
+    /* ГЛОУ-КАРТОЧКИ ДЛЯ ВСЕГО БЛОКА CONTACTS */
+    .card{
+      position:relative;
+      background:rgba(7,18,40,0.92);
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,0.16);
+      padding:28px 30px 30px;
+      box-shadow:0 24px 55px rgba(2,6,23,0.85);
+      backdrop-filter:blur(10px);
+      overflow:hidden;
 
-  /* Анимация */
-  opacity: 0;
-  transform: translateY(22px);
-  animation: fadeInUp 0.9s ease-out 0.45s forwards,
-             softGlow 7s ease-in-out 2s infinite alternate;
-}
+      opacity:0;
+      transform:translateY(22px);
+      animation:fadeInUp 0.9s ease-out 0.45s forwards,
+                 softGlow 7s ease-in-out 2s infinite alternate;
+    }
 
-/* Заголовки внутри карточек — чтобы были как в Deposit/Honorarium */
-.card .section-title {
-  font-size: 16px !important;
-  letter-spacing: 0.20em !important;
-  color: #dfe4ff !important;
-  margin-bottom: 14px !important;
-}
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-18%;
+      background:
+        radial-gradient(circle at 0% 0%,rgba(163,199,255,0.40),transparent 60%),
+        radial-gradient(circle at 100% 100%,rgba(117,167,255,0.35),transparent 60%);
+      mix-blend-mode:screen;
+      opacity:0.85;
+      z-index:-1;
+    }
+
+    /* Заголовки внутри карточек — чуть компактнее и как в Honorarium */
+    .card .section-title{
+      font-size:16px;
+      letter-spacing:0.20em;
+      color:#dfe4ff;
+      margin:0 0 14px;
+      text-transform:uppercase;
+    }
 
     .label {
       font-size:11px;
@@ -279,67 +292,69 @@
       color:#ffb3b3;
       display:none;
     }
+
     /* CONTACTS — верхняя карточка */
-.contacts-intro-card{
-  background:rgba(7,18,40,0.92);
-  border-radius:22px;
-  border:1px solid rgba(255,255,255,0.16);
-  padding:28px 30px 30px;
-  box-shadow:0 24px 55px rgba(2,6,23,0.8);
-  backdrop-filter:blur(10px);
-  margin-bottom:40px;
+    .contacts-intro-card{
+      background:rgba(7,18,40,0.92);
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,0.16);
+      padding:28px 30px 30px;
+      box-shadow:0 24px 55px rgba(2,6,23,0.8);
+      backdrop-filter:blur(10px);
+      margin-bottom:40px;
 
-  opacity:0;
-  transform:translateY(22px);
-  animation:fadeInUp 0.9s ease-out 0.35s forwards,
-             softGlow 7s ease-in-out 1.6s infinite alternate;
-}
+      opacity:0;
+      transform:translateY(22px);
+      animation:fadeInUp 0.9s ease-out 0.35s forwards,
+                 softGlow 7s ease-in-out 1.6s infinite alternate;
+    }
 
-.contacts-intro-card p{
-  font-size:15px;
-  line-height:1.75;
-  color:#e4e9ff;
-  margin-bottom:14px;
-}
+    .contacts-intro-card p{
+      font-size:15px;
+      line-height:1.75;
+      color:#e4e9ff;
+      margin-bottom:14px;
+    }
 
-.contacts-intro-card p:last-child{
-  margin-bottom:0;
-}
+    .contacts-intro-card p:last-child{
+      margin-bottom:0;
+    }
 
-.contacts-title{
-  font-size:32px;
-  font-weight:600;
-  letter-spacing:0.22em;
-  color:#f5f6ff;
-  text-transform:uppercase;
-  margin:0 0 18px;
-}
-/* Анимации для карточки (как на других страницах) */
-@keyframes fadeInUp{
-  from{
-    opacity:0;
-    transform:translateY(24px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
+    .contacts-title{
+      font-size:32px;
+      font-weight:600;
+      letter-spacing:0.22em;
+      color:#f5f6ff;
+      text-transform:uppercase;
+      margin:0 0 18px;
+    }
 
-@keyframes softGlow{
-  0%{
-    box-shadow:0 18px 40px rgba(2,6,23,0.78);
-    transform:translateY(0);
-  }
-  50%{
-    box-shadow:0 28px 60px rgba(90,140,255,0.60);
-    transform:translateY(-2px);
-  }
-  100%{
-    box-shadow:0 20px 46px rgba(2,6,23,0.85);
-    transform:translateY(0);
-  }
-}
+    /* Анимации */
+    @keyframes fadeInUp{
+      from{
+        opacity:0;
+        transform:translateY(24px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes softGlow{
+      0%{
+        box-shadow:0 18px 40px rgba(2,6,23,0.78);
+        transform:translateY(0);
+      }
+      50%{
+        box-shadow:0 28px 60px rgba(90,140,255,0.60);
+        transform:translateY(-2px);
+      }
+      100%{
+        box-shadow:0 20px 46px rgba(2,6,23,0.85);
+        transform:translateY(0);
+      }
+    }
 
   </style>
 </head>
@@ -360,35 +375,32 @@
       </div>
     </div>
 
-   <div class="contacts-intro-card">
+    <!-- ВЕРХНЯЯ GLOW-КАРТОЧКА С ТЕКСТОМ -->
+    <div class="contacts-intro-card">
+      <h1 class="contacts-title">CONTACTS</h1>
 
-  <h1 class="contacts-title">CONTACTS</h1>
+      <p>Want to arrange a meeting that will make the air turn hot?</p>
 
-  <p>
-    Want to arrange a meeting that will make the air turn hot?
-  </p>
+      <p>
+        Fill out this playful form below or send all your bold details and fantasies
+        straight to my email — sophiausa2025.08@gmail.com.
+      </p>
 
-  <p>
-    Fill out this playful form below or send all your bold details and fantasies
-    straight to my email — sophiausa2025.08@gmail.com.
-  </p>
+      <p>
+        I also accept requests through -7397 (if you’ve already passed my screening, daredevil),
+        but most of the time I’ll need a bit more spicy information to complete our flirty
+        little introduction process.
+      </p>
 
-  <p>
-    I also accept requests through -7397 (if you’ve already passed my screening, daredevil),
-    but most of the time I’ll need a bit more spicy information to complete our flirty
-    little introduction process.
-  </p>
+      <p>
+        I’ll reply to you within 24 hours — or you can take a risk and message me first.
+      </p>
 
-  <p>
-    I’ll reply to you within 24 hours — or you can take a risk and message me first.
-  </p>
-
-  <p>
-    Let’s see how far you’re willing to go. I do love someone who knows how to tease
-    just a little.
-  </p>
-
-</div>
+      <p>
+        Let’s see how far you’re willing to go. I do love someone who knows how to tease
+        just a little.
+      </p>
+    </div>
 
     <div class="grid">
       <!-- left: contacts -->
@@ -433,7 +445,7 @@
           <li>Introduce yourself with your name, city and a few words about you.</li>
           <li>Share your preferred day, time, duration and whether you prefer incall or outcall.</li>
           <li>New friends may be asked for light screening or a reference for safety.</li>
-          <li>A 20% deposit confirms our time together and is non‑refundable if cancelled within 24 hours.</li>
+          <li>A 20% deposit confirms our time together and is non-refundable if cancelled within 24 hours.</li>
           <li>Respectful, generous and discreet behaviour is essential. I do not respond to explicit or rushed messages.</li>
           <li>All information you share is treated as confidential and used only for our booking.</li>
         </ul>
@@ -519,7 +531,7 @@
         <div class="global-error" id="formError">Please check the highlighted fields and try again.</div>
 
         <p class="form-note">
-          *If you need to share photos or documents, you can send them after this form via e‑mail or WhatsApp.
+          *If you need to share photos or documents, you can send them after this form via e-mail or WhatsApp.
         </p>
       </form>
     </div>
