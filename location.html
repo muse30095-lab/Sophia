@@ -17,24 +17,32 @@
 
     .page{max-width:1080px;margin:0 auto;}
 
-    /* TOP NAV */
+    /* TOP NAV – как на других страницах */
     .topnav{
-      display:flex;flex-wrap:wrap;gap:16px;
-      align-items:center;justify-content:space-between;
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
       margin-bottom:32px;
       opacity:0;
       animation:fadeIn 0.6s ease-out 0.1s forwards;
     }
     .logo{
-      font-size:26px;font-weight:600;
-      letter-spacing:0.32em;text-transform:uppercase;
+      font-size:26px;
+      font-weight:600;
+      letter-spacing:0.32em;
+      text-transform:uppercase;
     }
     .nav-links{display:flex;flex-wrap:wrap;gap:10px;}
     .nav-links a{
-      color:#e4e7ef;text-decoration:none;
-      font-size:12px;letter-spacing:0.16em;
+      color:#e4e7ef;
+      text-decoration:none;
+      font-size:12px;
+      letter-spacing:0.16em;
       text-transform:uppercase;
-      padding:6px 14px;border-radius:999px;
+      padding:6px 14px;
+      border-radius:999px;
       border:1px solid rgba(255,255,255,0.18);
       background:rgba(255,255,255,0.04);
       transition:0.25s;
@@ -49,123 +57,243 @@
       box-shadow:0 0 18px rgba(120,170,255,0.55);
     }
 
-    /* LAYOUT общий */
-    .honor-layout{
-      display:flex;
-      gap:45px;
-      margin-top:40px;
-      align-items:flex-start;
+    /* TITLE */
+    h1{
+      font-size:32px;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+      margin:10px 0 6px;
+      color:#f5f5ff;
+      opacity:0;
+      transform:translateY(12px);
+      animation:fadeInUp 0.7s ease-out 0.25s forwards;
     }
-    @media(max-width:900px){
-      .honor-layout{flex-direction:column;align-items:center;}
-    }
-
-    /* Фото */
-    .honor-photo-box{
-      width:380px;
-      border-radius:24px;
-      overflow:hidden;
-      box-shadow:0 30px 65px rgba(0,0,0,0.75);
-      background:rgba(255,255,255,0.04);
-      padding:0;
-    }
-    .honor-photo-box img{
-      width:100%;height:auto;display:block;
-    }
-
-    /* Карточка прайса */
-    .rates-card{
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.12);
-      padding:28px 34px 34px;
-      border-radius:24px;
-      box-shadow:0 25px 55px rgba(0,0,0,0.65);
-      flex:1;
-      animation:fadeInUp 0.9s ease-out forwards;
+    .subtitle{
+      font-size:14px;
+      color:#cfd4ef;
+      max-width:520px;
+      line-height:1.7;
+      margin-bottom:26px;
+      opacity:0;
+      transform:translateY(10px);
+      animation:fadeInUp 0.7s ease-out 0.35s forwards;
     }
 
     .section-title{
-      font-size:18px;
-      letter-spacing:0.22em;
+      font-size:14px;
+      letter-spacing:0.18em;
       text-transform:uppercase;
-      color:#cfd5ff;
-      margin-bottom:18px;
+      color:#dfe4ff;
+      margin:0 0 10px;
+    }
+
+    /* LAYOUT: фото + прайс */
+    .honor-layout{
+      display:grid;
+      grid-template-columns:0.95fr 1.25fr;
+      gap:30px;
+      align-items:flex-start;
+      margin-bottom:34px;
+    }
+    @media(max-width:900px){
+      .honor-layout{grid-template-columns:1fr;}
+    }
+
+    /* ФОТО слева */
+    .honor-photo-box{
+      position:relative;
+      width:100%;
+      max-width:420px;
+      max-width:620px;
+      margin-top:4px;
+      border-radius:30px;
+      overflow:hidden;
+@@ -124,265 +124,266 @@
+      mix-blend-mode:screen;
+      z-index:0;
+    }
+    .honor-photo-box img{
+      position:relative;
+      z-index:1;
+      display:block;
+      width:100%;
+      height:auto;
+      object-fit:contain;      /* всё тело видно */
+      border-radius:30px;
+      transform:scale(1.03);
+      transition:transform 0.35s ease, box-shadow 0.35s ease;
+    }
+   .honor-photo-box img{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:100%;          /* было auto — ставим 100% */
+  object-fit:cover;     /* вытягивает фото вверх/вниз, без искажения фигуры */
+  border-radius:30px;
+  transform:scale(1.05); /* чуть увеличила */
+  transition:transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+    .honor-photo-box:hover img{
+      transform:scale(1.07) translateY(-4px);
+      box-shadow:0 40px 90px rgba(120,170,255,0.8);
+    }
+
+    /* ПРАЙС-карточка */
+    .rates-card{
+      background:rgba(7,18,40,0.92);
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,0.16);
+      padding:22px 24px 24px;
+      box-shadow:0 24px 55px rgba(2,6,23,0.8);
+      backdrop-filter:blur(10px);
+      opacity:0;
+      transform:translateY(20px);
+      animation:fadeInUp 0.9s ease-out 0.45s forwards,
+                 softGlow 7s ease-in-out 1.8s infinite alternate;
     }
 
     .rates-note{
-      font-size:13px;color:#aeb4d7;margin-bottom:22px;
+      font-size:12px;
+      color:#b9c0e6;
+      margin-bottom:10px;
     }
 
     .rates-grid{
-      display:flex;gap:26px;align-items:flex-start;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:6px;
+    }
+    @media(max-width:700px){
+      .rates-grid{grid-template-columns:1fr;}
     }
 
     .rates-column-title{
-      font-size:16px;
-      margin-bottom:10px;
-      letter-spacing:0.12em;
+      font-size:13px;
+      letter-spacing:0.16em;
       text-transform:uppercase;
-      color:#dce1ff;
+      color:#e3e7ff;
+      margin-bottom:10px;
     }
 
     .rates-list{
-      list-style:none;margin:0;padding:0;
+      list-style:none;
+      margin:0;
+      padding:0;
+      font-size:14px;
+      line-height:1.7;
+      color:#e6ebff;
     }
     .rates-list li{
       display:flex;
       justify-content:space-between;
-      width:160px;
-      padding:6px 0;
-      font-size:16px;
-      color:#e6ecff;
+      margin-bottom:4px;
     }
-    .time{opacity:0.85;}
-    .price{font-weight:600;}
-
-    /* Вертикальный разделитель */
-    .rates-divider{
-      width:2px;height:auto;
-      background:linear-gradient(to bottom,#6ea6ff,#2d5bff);
-      border-radius:12px;
-      opacity:0.85;
+    .rates-list span.time{
+      opacity:0.9;
+    }
+    .rates-list span.price{
+      font-weight:500;
+      padding-left:10px;
     }
 
-    /* Deposit */
+    /* DEPOSIT блок снизу */
     .deposit-card{
-      margin-top:55px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.12);
-      padding:28px 32px;
-      border-radius:22px;
-      box-shadow:0 25px 55px rgba(0,0,0,0.65);
+      margin-top:24px;
+      background:rgba(7,18,40,0.95);
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.16);
+      padding:20px 24px 22px;
+      box-shadow:0 22px 50px rgba(2,6,23,0.78);
+      backdrop-filter:blur(10px);
       max-width:880px;
       margin-left:auto;
       margin-right:auto;
+      opacity:0;
+      transform:translateY(22px);
+      animation:fadeInUp 0.9s ease-out 0.6s forwards,
+                 softGlow 7s ease-in-out 2.1s infinite alternate;
     }
-    .deposit-title{
-      font-size:17px;
-      letter-spacing:0.22em;
+    .deposit-card h2{
+      font-size:14px;
+      letter-spacing:0.20em;
       text-transform:uppercase;
-      color:#cfd5ff;
-      margin-bottom:14px;
+      margin:0 0 10px;
+      color:#dfe4ff;
+      text-align:left;
     }
-    .deposit-text{
-      font-size:15px;
+    .deposit-card p{
+      margin:0 0 10px;
+      font-size:14px;
       line-height:1.8;
-      color:#e6ecff;
+      color:#e0e5ff;
+    }
+    .deposit-card p:last-child{margin-bottom:0;}
+
+    /* BUTTONS (если захочешь кнопки снизу) */
+    .honor-buttons{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .btn-primary{
+      display:inline-block;
+      padding:12px 28px;
+      border-radius:999px;
+      border:1px solid rgba(178,206,255,0.85);
+      background:linear-gradient(135deg,#2d5bff,#6ea6ff);
+      color:white;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:0.18em;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 14px 30px rgba(15,23,42,0.75);
+      transition:0.22s;
+      text-decoration:none;
+    }
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      box-shadow:0 18px 40px rgba(37,99,235,0.65);
     }
 
+    /* Animations */
     @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(20px);}
+      from{opacity:0;transform:translateY(24px);}
       to{opacity:1;transform:translateY(0);}
+    }
+    @keyframes fadeIn{
+      from{opacity:0;}
+      to{opacity:1;}
+    }
+    @keyframes softGlow{
+      0%{
+        box-shadow:0 18px 40px rgba(2,6,23,0.78);
+        transform:translateY(0);
+      }
+      50%{
+        box-shadow:0 28px 60px rgba(90,140,255,0.60);
+        transform:translateY(-2px);
+      }
+      100%{
+        box-shadow:0 20px 46px rgba(2,6,23,0.85);
+        transform:translateY(0);
+      }
     }
   </style>
 </head>
-
 <body>
 
-  <div class="page">
+  <!-- маленький плеер, если есть music.mp3 -->
+  <audio controls loop style="position:fixed; bottom:20px; left:20px; z-index:1000; opacity:0.9;">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
 
+  <div class="page">
     <!-- NAV -->
     <div class="topnav">
       <div class="logo">SOPHIA</div>
@@ -173,29 +301,34 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="formats.html">Formats</a>
-        <a href="location.html" class="current">Honorarium</a>
+        <a href="location.html" class="current">Location</a>
         <a href="wishlist.html">Wishlist</a>
         <a href="contacts.html">Contacts</a>
         <a href="gallery.html">Gallery</a>
       </div>
     </div>
 
-    <!-- MAIN BLOCK -->
+    <h1>Honorarium</h1>
+    <div class="subtitle">
+      A refined overview of my time-based honorarium — designed for those who value elegance,
+      clarity, and a beautifully curated experience.
+    </div>
+
+    <!-- ФОТО + ПРАЙС -->
     <section class="honor-layout">
 
-      <!-- Фото -->
+      <!-- ЛЕВОЕ ФОТО -->
       <div class="honor-photo-box">
-        <img src="honor-sophia.jpg" alt="Sophia honorarium portrait">
+        <!-- загрузи сюда файл, например honor-sophia.jpg -->
+        <img src="honor-sophia.jpg" alt="Sophia in evening gown">
       </div>
 
-      <!-- Прайс -->
+      <!-- ПРАЙС -->
       <div class="rates-card">
         <h2 class="section-title">Outcall / Incall</h2>
         <div class="rates-note">All rates are in USD and reflect my time, presence and companionship.</div>
 
         <div class="rates-grid">
-
-          <!-- Outcall -->
           <div>
             <div class="rates-column-title">Outcall</div>
             <ul class="rates-list">
@@ -211,10 +344,6 @@
             </ul>
           </div>
 
-          <!-- Divider -->
-          <div class="rates-divider"></div>
-
-          <!-- Incall -->
           <div>
             <div class="rates-column-title">Incall</div>
             <ul class="rates-list">
@@ -228,26 +357,32 @@
               <li><span class="time">8h</span><span class="price">4500</span></li>
             </ul>
           </div>
+        </div>
 
+        <div class="honor-buttons">
+          <a href="contacts.html#booking" class="btn-primary">Request booking</a>
         </div>
       </div>
-
     </section>
 
     <!-- DEPOSIT -->
-    <div class="deposit-card">
-      <div class="deposit-title">Deposit</div>
-      <div class="deposit-text">
-        My darlings, I’ll need a little deposit for all my steamy outcall adventures!
-        Pay like the VIP you are — through gift cards or crypto!
-        But if something wild pops up (like aliens crashing the party with their neon-green spaceships,
-        or my cat going feral), I might need to cancel our spicy rendezvous.
-        Don’t worry — your money will be back in your pocket faster than you can whisper
-        “naughty wallet,” within the hour!
-      </div>
-    </div>
+    <section class="deposit-card">
+      <h2>Deposit</h2>
+      <p>
+        My darlings, I’ll need a little deposit for all my steamy outcall adventures.
+        Pay like the VIP you are — through gift cards or crypto.
+      </p>
+      <p>
+        But if something wild pops up (like aliens crashing the party with their neon-green
+        spaceships beaming down, demanding to join our spicy date with their tentacle hugs,
+        or my cat going feral), I might have to cancel our rendezvous.
+      </p>
+      <p>
+        Don’t worry, though — your money will be back in your pocket faster than you can
+        whisper “naughty wallet”, within the hour.
+      </p>
+    </section>
 
   </div>
-
 </body>
 </html>
