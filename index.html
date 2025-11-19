@@ -59,11 +59,12 @@
 
     /* HERO GRID */
     .hero{
-      display:grid;
-      grid-template-columns:1.35fr 1.15fr;  /* фото чуть шире */
-      gap:26px;                              /* ближе к тексту */
-      align-items:flex-end;                  /* низ выровнен */
-    }
+  display:grid;
+  grid-template-columns:1.35fr 1.15fr;
+  gap:26px;
+  align-items:center;        /* выравниваем по центру, не по низу */
+}
+
     @media(max-width:900px){
       .hero{
         grid-template-columns:1fr;
@@ -149,7 +150,7 @@
       width:100%;
       max-width:560px;                 /* шире */
       margin-left:-8px;                /* ближе к тексту */
-      margin-top:-24px;                /* подняли выше */
+      margin-top:-40px;                /* подняли выше */
       border-radius:30px;
       overflow:hidden;
       background:rgba(4,10,25,0.55);
