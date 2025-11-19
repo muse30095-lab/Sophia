@@ -149,61 +149,67 @@
     }
 
     /* HERO RIGHT – ПОДСВЕЧЕННОЕ ФОТО ВМЕСТО РАМКИ */
-    .hero-photo-box{
-      position:relative;
-      border-radius:30px;
-      background:radial-gradient(circle at 0% 0%,#3343a5,#050818 70%);
-      border:1px solid rgba(160,190,255,0.55);
-      overflow:hidden;
-      box-shadow:0 28px 70px rgba(2,6,23,0.9);
-      opacity:0;
-      transform:translateY(22px);
-      animation:fadeInUp 0.9s ease-out 0.35s forwards,
-               softGlow 7s ease-in-out 1.4s infinite alternate;
-      display:flex;
-      align-items:stretch;
-      justify-content:center;
-      min-height:480px;         /* визуально подогнано под высоту текста */
-      margin-right:-10px;       /* немного ближе к центру */
-    }
+    /* === HERO RIGHT — УЛУЧШЕННОЕ ЭЛИТНОЕ ФОТО === */
+.hero-photo-box{
+  position:relative;
+  border-radius:22px;
+  background:radial-gradient(circle at 10% 0%, #374a9b, #050818 75%);
+  border:1px solid rgba(170,200,255,0.55);
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(2,6,23,0.92);
+  opacity:0;
+  transform:translateY(18px);
+  animation:fadeInUp 0.9s ease-out 0.3s forwards,
+           softGlow 7s ease-in-out 1.4s infinite alternate;
 
-    .hero-photo-box::before{
-      content:"";
-      position:absolute;
-      inset:-18%;
-      background:
-        radial-gradient(circle at 10% 0%,rgba(163,199,255,0.55),transparent 60%),
-        radial-gradient(circle at 90% 85%,rgba(117,167,255,0.45),transparent 60%);
-      mix-blend-mode:screen;
-      opacity:0.9;
-      pointer-events:none;
-    }
+  /* КЛЮЧЕВЫЕ ПРАВКИ */
+  min-height:700px;       /* выше и крупнее */
+  width:95%;              /* почти вся колонка */
+  margin-left:20px;       /* приближает к тексту */
+  margin-top:5px;
+  display:flex;
+  align-items:stretch;
+}
 
-    .hero-photo-box img{
-      position:relative;
-      z-index:1;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      border-radius:24px;
-      transform:translateY(2px);
-      transition:transform 0.4s ease, box-shadow 0.4s ease;
-      box-shadow:0 18px 45px rgba(0,0,0,0.85);
-    }
+/* Нежное свечение, как на About Me */
+.hero-photo-box::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(163,199,255,0.55), transparent 60%),
+    radial-gradient(circle at 95% 85%, rgba(117,167,255,0.45), transparent 60%);
+  mix-blend-mode:screen;
+  opacity:0.9;
+  pointer-events:none;
+}
 
-    .hero-photo-box img:hover{
-      transform:translateY(-4px) scale(1.01);
-      box-shadow:0 26px 70px rgba(90,140,255,0.75);
-    }
+/* Фото = большие размеры + элитный вид */
+.hero-photo-box img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:20px;
+  transition:0.45s ease;
+  box-shadow:0 24px 55px rgba(0,0,0,0.85);
+}
 
-    @media(max-width:900px){
-      .hero-photo-box{
-        margin-top:18px;
-        margin-right:0;
-        min-height:420px;
-      }
-    }
+/* Hover эффект – нежное увеличение + мягкий glow */
+.hero-photo-box img:hover{
+  transform:scale(1.02) translateY(-4px);
+  box-shadow:0 40px 90px rgba(120,150,255,0.75);
+}
+
+@media(max-width:900px){
+  .hero-photo-box{
+    min-height:550px;
+    width:100%;
+    margin-left:0;
+  }
+}
+
 
     /* Animations */
     @keyframes fadeInUp{
