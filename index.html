@@ -14,9 +14,10 @@
       padding:40px 20px 60px;
       overflow-x:hidden;
     }
+
     .page{max-width:1080px;margin:0 auto;}
 
-    /* TOP NAV */
+    /* TOP NAV – как на других страницах */
     .topnav{
       display:flex;
       flex-wrap:wrap;
@@ -56,23 +57,22 @@
       box-shadow:0 0 18px rgba(120,170,255,0.55);
     }
 
-    /* HERO GRID */
+    /* HERO */
     .hero{
       display:grid;
-      grid-template-columns:1.35fr 1.1fr;  /* фото шире и ближе к тексту */
-      gap:22px;
-      align-items:stretch;
+      grid-template-columns:1.4fr 1.1fr;
+      gap:34px;
+      align-items:flex-end;          /* выравниваем текст и фото по низу */
     }
     @media(max-width:900px){
-      .hero{
-        grid-template-columns:1fr;
-      }
+      .hero{grid-template-columns:1fr;}
     }
 
     .hero-text{
       opacity:0;
       transform:translateY(18px);
       animation:fadeInUp 0.9s ease-out 0.25s forwards;
+      margin-top:32px;               /* опустили блок текста чуть ниже */
     }
 
     .hero-label{
@@ -80,15 +80,7 @@
       letter-spacing:0.25em;
       text-transform:uppercase;
       color:#aeb4d7;
-      margin-bottom:10px;
-    }
-
-    .hero-title{
-      font-size:50px;
-      letter-spacing:0.32em;
-      text-transform:uppercase;
-      margin:0 0 18px;
-      color:#f5f5ff;
+      margin-bottom:14px;
     }
 
     .hero-sub{
@@ -148,53 +140,51 @@
       transform:translateY(-1px);
     }
 
-    /* HERO RIGHT – ПОДСВЕЧЕННОЕ ФОТО ВМЕСТО РАМКИ */
-    /* === HERO RIGHT — УЛУЧШЕННОЕ ЭЛИТНОЕ ФОТО === */
-/* ---- ПРАВАЯ ФОТО-ГАЛЕРЕЯ (полное фото, не обрезается) ---- */
-.hero-photo-box{
-  position: relative;
-  border-radius: 26px;
-  background: radial-gradient(circle at 0% 0%, #3343a5, #050818 65%);
-  border: 1px solid rgba(160,190,255,0.45);
-  overflow: hidden;
-  box-shadow: 0 26px 65px rgba(2,6,23,0.9);
-  opacity: 0;
-  transform: translateY(22px);
-  animation: fadeInUp 0.9s ease-out 0.35s forwards,
-             softGlow 7s ease-in-out 1.4s infinite alternate;
-  
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;  /* Выровняем фото по НИЗУ */
-  padding: 0;
-  height: 100%; /* растягивается под высоту контента */
-}
+    /* HERO RIGHT – большое подсвеченное фото */
+    .hero-photo-box{
+      position:relative;
+      width:100%;
+      max-width:430px;                    /* ширина фото-колонки */
+      margin-left:16px;                   /* ближе к тексту */
+      border-radius:28px;
+      overflow:hidden;
+      background:rgba(4,10,25,0.55);      /* тёмная подложка */
+      box-shadow:0 26px 65px rgba(2,6,23,0.9);
+      opacity:0;
+      transform:translateY(22px);
+      animation:fadeInUp 0.9s ease-out 0.35s forwards,
+                 softGlow 7s ease-in-out 1.4s infinite alternate;
+    }
 
-/* Фото полностью видно, НЕ обрезается */
-.hero-photo-box img{
-  width: 100%;
-  height: auto;
-  object-fit: contain;   /* чтобы фото не резалось */
-  display: block;
+    /* синяя аура вокруг фото */
+    .hero-photo-box::before{
+      content:"";
+      position:absolute;
+      inset:-18%;
+      background:
+        radial-gradient(circle at 0% 0%,rgba(163,199,255,0.55),transparent 60%),
+        radial-gradient(circle at 100% 100%,rgba(117,167,255,0.45),transparent 60%);
+      mix-blend-mode:screen;
+      z-index:0;
+    }
 
-  transition: 0.35s ease;
-}
+    /* само фото – целиком, без обрезки */
+    .hero-photo-box img{
+      position:relative;
+      z-index:1;
+      display:block;
+      width:100%;
+      height:auto;                /* видно тело полностью */
+      object-fit:contain;
+      border-radius:28px;
+      transition:transform 0.35s ease, box-shadow 0.35s ease;
+    }
 
-/* Hover эффект: glow + небольшое увеличение */
-.hero-photo-box:hover img{
-  transform: scale(1.03);
-  filter: drop-shadow(0 0 22px rgba(160,200,255,0.55));
-}
-
-
-@media(max-width:900px){
-  .hero-photo-box{
-    min-height:550px;
-    width:100%;
-    margin-left:0;
-  }
-}
-
+    /* лёгкий hover-эффект */
+    .hero-photo-box:hover img{
+      transform:scale(1.03) translateY(-4px);
+      box-shadow:0 34px 70px rgba(120,170,255,0.70);
+    }
 
     /* Animations */
     @keyframes fadeInUp{
@@ -245,30 +235,40 @@
 
     <!-- HERO -->
     <section class="hero">
-      <!-- ЛЕВАЯ ЧАСТЬ: ТЕКСТ -->
+      <!-- ЛЕВЫЙ БЛОК: ТЕКСТ -->
       <div class="hero-text">
         <div class="hero-label">WELCOME</div>
 
         <div class="hero-sub">
           <p>
-            Welcome to the twilight of my world — a place where desire glows in the dark and curiosity becomes the sweetest temptation.
-            I am Sophia, a woman woven from moonlit whispers and forbidden dreams, here to pull you gently yet irresistibly into my orbit.
+            Welcome to the twilight of my world — a place where desire glows in the dark
+            and curiosity becomes the sweetest temptation. I am Sophia, a woman woven from
+            moonlit whispers and forbidden dreams, here to pull you gently yet irresistibly
+            into my orbit.
           </p>
+
           <p>
-            If you’re longing for a presence that ignites the moment you enter the room… if you crave a connection that hums with tension,
-            mystery, and the promise of something beautifully intense… you’ve already taken your first step toward me.
+            If you’re longing for a presence that ignites the moment you enter the room…
+            if you crave a connection that hums with tension, mystery, and the promise of
+            something beautifully intense… you’ve already taken your first step toward me.
           </p>
+
           <p>
-            I am the spark in the silence, the warmth behind a slow smile, the soft danger of a thought you can’t shake.
+            I am the spark in the silence, the warmth behind a slow smile, the soft danger
+            of a thought you can’t shake.
           </p>
+
           <p>
-            Explore my world with an open mind and a bold heart — each line, each glance, each hidden corner is crafted to awaken your senses
-            in ways you didn’t expect. And when you feel that quiet pull… that magnetic ache of wanting just a little more…
+            Explore my world with an open mind and a bold heart — each line, each glance,
+            each hidden corner is crafted to awaken your senses in ways you didn’t expect.
+            And when you feel that quiet pull… that magnetic ache of wanting just a little more…
           </p>
+
           <p>Don’t ignore it.</p>
+
           <p>
-            Reach out. Let the story begin. I’m already feeling the thrill of your attention — and the delicious anticipation of what may
-            unfold between us.
+            Reach out. Let the story begin. I’m already feeling the thrill of your attention —
+            and the delicious anticipation of what may unfold between us.
           </p>
         </div>
 
@@ -278,7 +278,7 @@
         </div>
       </div>
 
-      <!-- ПРАВАЯ ЧАСТЬ: ПОДСВЕЧЕННОЕ ФОТО -->
+      <!-- ПРАВАЯ КОЛОНКА: ПОДСВЕЧЁННОЕ ФОТО -->
       <div class="hero-photo-box">
         <img src="home-sophia.jpg" alt="Sophia portrait">
       </div>
