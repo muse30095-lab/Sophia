@@ -14,6 +14,7 @@
       padding:40px 20px 60px;
       overflow-x:hidden;
     }
+
     .page{max-width:1080px;margin:0 auto;}
 
     /* TOP NAV – как на других страницах */
@@ -56,12 +57,12 @@
       box-shadow:0 0 18px rgba(120,170,255,0.55);
     }
 
-    /* PAGE TITLES */
+    /* TITLE */
     h1{
       font-size:32px;
       letter-spacing:0.22em;
       text-transform:uppercase;
-      margin:10px 0 4px;
+      margin:10px 0 6px;
       color:#f5f5ff;
       opacity:0;
       transform:translateY(12px);
@@ -72,40 +73,48 @@
       color:#cfd4ef;
       max-width:520px;
       line-height:1.7;
-      margin-bottom:24px;
+      margin-bottom:26px;
       opacity:0;
       transform:translateY(10px);
-      animation:fadeInUp 0.7s ease-out 0.32s forwards;
+      animation:fadeInUp 0.7s ease-out 0.35s forwards;
     }
 
-    /* MAIN LAYOUT: фото слева, прайс по центру */
-    .honorarium-layout{
+    .section-title{
+      font-size:14px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:#dfe4ff;
+      margin:0 0 10px;
+    }
+
+    /* LAYOUT: фото + прайс */
+    .honor-layout{
       display:grid;
-      grid-template-columns:0.9fr 1.1fr;
+      grid-template-columns:0.95fr 1.25fr;
       gap:30px;
       align-items:flex-start;
-      margin-top:10px;
+      margin-bottom:34px;
     }
     @media(max-width:900px){
-      .honorarium-layout{
-        grid-template-columns:1fr;
-      }
+      .honor-layout{grid-template-columns:1fr;}
     }
 
-    /* ЛЕВАЯ КОЛОНКА – ФОТО */
-    .rate-photo-box{
+    /* ФОТО слева */
+    .honor-photo-box{
       position:relative;
+      width:100%;
       max-width:420px;
+      margin-top:4px;
       border-radius:30px;
       overflow:hidden;
-      background:rgba(4,10,25,0.65);
+      background:rgba(4,10,25,0.55);
       box-shadow:0 32px 80px rgba(2,6,23,0.9);
       opacity:0;
       transform:translateY(18px);
       animation:fadeInUp 0.9s ease-out 0.3s forwards,
                  softGlow 7s ease-in-out 1.4s infinite alternate;
     }
-    .rate-photo-box::before{
+    .honor-photo-box::before{
       content:"";
       position:absolute;
       inset:-18%;
@@ -115,127 +124,124 @@
       mix-blend-mode:screen;
       z-index:0;
     }
-    .rate-photo-box img{
+    .honor-photo-box img{
       position:relative;
       z-index:1;
       display:block;
       width:100%;
       height:auto;
-      object-fit:contain;      /* всё тело видно, ничего не режем */
+      object-fit:contain;      /* всё тело видно */
       border-radius:30px;
       transform:scale(1.03);
       transition:transform 0.35s ease, box-shadow 0.35s ease;
     }
-    .rate-photo-box:hover img{
+    .honor-photo-box:hover img{
       transform:scale(1.07) translateY(-4px);
-      box-shadow:0 40px 90px rgba(120,170,255,0.75);
+      box-shadow:0 40px 90px rgba(120,170,255,0.8);
     }
 
-    /* ПРАЙС – двойной столбик */
+    /* ПРАЙС-карточка */
     .rates-card{
-      background:rgba(7,18,40,0.95);
+      background:rgba(7,18,40,0.92);
       border-radius:22px;
       border:1px solid rgba(255,255,255,0.16);
-      padding:22px 26px 24px;
+      padding:22px 24px 24px;
       box-shadow:0 24px 55px rgba(2,6,23,0.8);
       backdrop-filter:blur(10px);
       opacity:0;
       transform:translateY(20px);
-      animation:fadeInUp 0.9s ease-out 0.38s forwards,
-                 softGlow 8s ease-in-out 1.9s infinite alternate;
+      animation:fadeInUp 0.9s ease-out 0.45s forwards,
+                 softGlow 7s ease-in-out 1.8s infinite alternate;
     }
-    .rates-title{
-      font-size:13px;
-      letter-spacing:0.22em;
-      text-transform:uppercase;
-      color:#cfd5ff;
-      margin:0 0 14px;
-    }
+
     .rates-note{
-      font-size:13px;
-      color:#b9c1f0;
-      margin-bottom:14px;
+      font-size:12px;
+      color:#b9c0e6;
+      margin-bottom:10px;
     }
 
     .rates-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:10px 36px;
-      margin-top:10px;
+      gap:18px;
+      margin-top:6px;
     }
-    @media(max-width:600px){
-      .rates-grid{
-        grid-template-columns:1fr;
-      }
+    @media(max-width:700px){
+      .rates-grid{grid-template-columns:1fr;}
     }
 
-    .rate-item{
+    .rates-column-title{
+      font-size:13px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:#e3e7ff;
+      margin-bottom:10px;
+    }
+
+    .rates-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      font-size:14px;
+      line-height:1.7;
+      color:#e6ebff;
+    }
+    .rates-list li{
       display:flex;
       justify-content:space-between;
-      gap:10px;
-      font-size:14px;
-      color:#e4e8ff;
-      padding:7px 0;
-      border-bottom:1px dashed rgba(148,163,230,0.35);
+      margin-bottom:4px;
     }
-    .rate-item:last-child{
-      border-bottom:none;
+    .rates-list span.time{
+      opacity:0.9;
     }
-    .rate-time{
-      text-transform:uppercase;
-      letter-spacing:0.12em;
-      font-size:11px;
-      color:#aeb4d7;
-    }
-    .rate-label{
-      font-size:14px;
-      color:#e9ecff;
-    }
-    .rate-price{
-      font-size:14px;
+    .rates-list span.price{
       font-weight:500;
-      color:#f7fbff;
-      white-space:nowrap;
+      padding-left:10px;
     }
 
-    /* DEPOSIT BLOCK */
+    /* DEPOSIT блок снизу */
     .deposit-card{
-      margin-top:30px;
-      max-width:820px;
-      background:rgba(7,18,40,0.97);
-      border-radius:18px;
+      margin-top:24px;
+      background:rgba(7,18,40,0.95);
+      border-radius:20px;
       border:1px solid rgba(255,255,255,0.16);
-      padding:18px 22px 20px;
-      box-shadow:0 20px 45px rgba(2,6,23,0.8);
+      padding:20px 24px 22px;
+      box-shadow:0 22px 50px rgba(2,6,23,0.78);
       backdrop-filter:blur(10px);
+      max-width:880px;
+      margin-left:auto;
+      margin-right:auto;
       opacity:0;
       transform:translateY(22px);
-      animation:fadeInUp 0.9s ease-out 0.52s forwards,
-                 softGlow 9s ease-in-out 2.2s infinite alternate;
+      animation:fadeInUp 0.9s ease-out 0.6s forwards,
+                 softGlow 7s ease-in-out 2.1s infinite alternate;
     }
-    .deposit-title{
-      font-size:12px;
-      letter-spacing:0.22em;
+    .deposit-card h2{
+      font-size:14px;
+      letter-spacing:0.20em;
       text-transform:uppercase;
-      color:#cfd5ff;
-      margin-bottom:8px;
+      margin:0 0 10px;
+      color:#dfe4ff;
+      text-align:left;
     }
-    .deposit-text{
+    .deposit-card p{
+      margin:0 0 10px;
       font-size:14px;
       line-height:1.8;
-      color:#dde2ff;
+      color:#e0e5ff;
     }
+    .deposit-card p:last-child{margin-bottom:0;}
 
-    /* BUTTONS (если захочешь добавить) */
-    .bottom-actions{
-      margin-top:22px;
+    /* BUTTONS (если захочешь кнопки снизу) */
+    .honor-buttons{
+      margin-top:18px;
       display:flex;
       flex-wrap:wrap;
       gap:12px;
     }
     .btn-primary{
       display:inline-block;
-      padding:12px 30px;
+      padding:12px 28px;
       border-radius:999px;
       border:1px solid rgba(178,206,255,0.85);
       background:linear-gradient(135deg,#2d5bff,#6ea6ff);
@@ -255,9 +261,9 @@
       box-shadow:0 18px 40px rgba(37,99,235,0.65);
     }
 
-    /* ANIMATIONS */
+    /* Animations */
     @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(22px);}
+      from{opacity:0;transform:translateY(24px);}
       to{opacity:1;transform:translateY(0);}
     }
     @keyframes fadeIn{
@@ -282,7 +288,7 @@
 </head>
 <body>
 
-  <!-- маленький плеер, как на других страницах -->
+  <!-- маленький плеер, если есть music.mp3 -->
   <audio controls loop style="position:fixed; bottom:20px; left:20px; z-index:1000; opacity:0.9;">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
@@ -295,7 +301,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="formats.html">Formats</a>
-        <a href="location.html" class="current">Honorarium</a>
+        <a href="location.html" class="current">Location</a>
         <a href="wishlist.html">Wishlist</a>
         <a href="contacts.html">Contacts</a>
         <a href="gallery.html">Gallery</a>
@@ -304,98 +310,77 @@
 
     <h1>Honorarium</h1>
     <div class="subtitle">
-      Time together is always bespoke, intimate and unhurried.  
-      Below is a simple outline of my honorarium for private encounters.
+      A refined overview of my time-based honorarium — designed for those who value elegance,
+      clarity, and a beautifully curated experience.
     </div>
 
-    <!-- MAIN LAYOUT -->
-    <section class="honorarium-layout">
-      <!-- ЛЕВАЯ КОЛОНКА: ФОТО -->
-      <div class="rate-photo-box">
-        <!-- заменишь файл на любой свой, при желании -->
-        <img src="home-sophia.jpg" alt="Sophia portrait">
+    <!-- ФОТО + ПРАЙС -->
+    <section class="honor-layout">
+
+      <!-- ЛЕВОЕ ФОТО -->
+      <div class="honor-photo-box">
+        <!-- загрузи сюда файл, например honor-sophia.jpg -->
+        <img src="honor-sophia.jpg" alt="Sophia in evening gown">
       </div>
 
       <!-- ПРАЙС -->
-      <div>
-        <div class="rates-card">
-          <div class="rates-title">PRIVATE ENCOUNTERS</div>
-          <div class="rates-note">
-            All honorarium is for my time and companionship only.
+      <div class="rates-card">
+        <h2 class="section-title">Outcall / Incall</h2>
+        <div class="rates-note">All rates are in USD and reflect my time, presence and companionship.</div>
+
+        <div class="rates-grid">
+          <div>
+            <div class="rates-column-title">Outcall</div>
+            <ul class="rates-list">
+              <li><span class="time">1h</span><span class="price">1500</span></li>
+              <li><span class="time">2h</span><span class="price">2000</span></li>
+              <li><span class="time">3h</span><span class="price">2500</span></li>
+              <li><span class="time">4h</span><span class="price">3000</span></li>
+              <li><span class="time">5h</span><span class="price">3500</span></li>
+              <li><span class="time">6h</span><span class="price">4000</span></li>
+              <li><span class="time">7h</span><span class="price">4500</span></li>
+              <li><span class="time">8h</span><span class="price">5000</span></li>
+              <li><span class="time">24h</span><span class="price">8000</span></li>
+            </ul>
           </div>
 
-          <div class="rates-grid">
-            <!-- ЛЕВАЯ ПОЛОВИНА -->
-            <div>
-              <div class="rate-item">
-                <div>
-                  <div class="rate-time">1 HOUR</div>
-                  <div class="rate-label">First introduction</div>
-                </div>
-                <div class="rate-price">$XXX</div>
-              </div>
-
-              <div class="rate-item">
-                <div>
-                  <div class="rate-time">1.5 HOURS</div>
-                  <div class="rate-label">A little more time</div>
-                </div>
-                <div class="rate-price">$XXX</div>
-              </div>
-
-              <div class="rate-item">
-                <div>
-                  <div class="rate-time">2 HOURS</div>
-                  <div class="rate-label">Unhurried connection</div>
-                </div>
-                <div class="rate-price">$XXX</div>
-              </div>
-            </div>
-
-            <!-- ПРАВАЯ ПОЛОВИНА -->
-            <div>
-              <div class="rate-item">
-                <div>
-                  <div class="rate-time">3 HOURS</div>
-                  <div class="rate-label">Extended rendezvous</div>
-                </div>
-                <div class="rate-price">$XXX</div>
-              </div>
-
-              <div class="rate-item">
-                <div>
-                  <div class="rate-time">DINNER DATE</div>
-                  <div class="rate-label">Evening together</div>
-                </div>
-                <div class="rate-price">$XXX</div>
-              </div>
-
-              <div class="rate-item">
-                <div>
-                  <div class="rate-time">OVERNIGHT</div>
-                  <div class="rate-label">Dreamy escape</div>
-                </div>
-                <div class="rate-price">$XXX</div>
-              </div>
-            </div>
+          <div>
+            <div class="rates-column-title">Incall</div>
+            <ul class="rates-list">
+              <li><span class="time">1h</span><span class="price">1000</span></li>
+              <li><span class="time">2h</span><span class="price">1500</span></li>
+              <li><span class="time">3h</span><span class="price">2000</span></li>
+              <li><span class="time">4h</span><span class="price">2500</span></li>
+              <li><span class="time">5h</span><span class="price">3000</span></li>
+              <li><span class="time">6h</span><span class="price">3500</span></li>
+              <li><span class="time">7h</span><span class="price">4000</span></li>
+              <li><span class="time">8h</span><span class="price">4500</span></li>
+            </ul>
           </div>
         </div>
 
-        <!-- DEPOSIT -->
-        <div class="deposit-card">
-          <div class="deposit-title">DEPOSIT</div>
-          <div class="deposit-text">
-            To confirm our time together, a small non-refundable deposit is kindly required.
-            The balance is offered at the beginning of our date in an unsealed envelope or
-            a small gift bag. Discretion and elegance are always appreciated.
-          </div>
-        </div>
-
-        <!-- ЕСЛИ ХОЧЕШЬ – КНОПКА ВНИЗУ -->
-        <div class="bottom-actions">
-          <a href="contacts.html#booking" class="btn-primary">Request a date</a>
+        <div class="honor-buttons">
+          <a href="contacts.html#booking" class="btn-primary">Request booking</a>
         </div>
       </div>
+    </section>
+
+    <!-- DEPOSIT -->
+    <section class="deposit-card">
+      <h2>Deposit</h2>
+      <p>
+        My darlings, I’ll need a little deposit for all my steamy outcall adventures.
+        Pay like the VIP you are — through gift cards or crypto.
+      </p>
+      <p>
+        But if something wild pops up (like aliens crashing the party with their neon-green
+        spaceships beaming down, demanding to join our spicy date with their tentacle hugs,
+        or my cat going feral), I might have to cancel our rendezvous.
+      </p>
+      <p>
+        Don’t worry, though — your money will be back in your pocket faster than you can
+        whisper “naughty wallet”, within the hour.
+      </p>
     </section>
 
   </div>
