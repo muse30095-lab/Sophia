@@ -17,7 +17,7 @@
 
     .page{max-width:1080px;margin:0 auto;}
 
-    /* TOP NAV (как на других страницах) */
+    /* TOP NAV */
     .topnav{
       display:flex;
       flex-wrap:wrap;
@@ -48,14 +48,13 @@
     .nav-links a:hover{
       background:rgba(255,255,255,0.18);
       box-shadow:0 0 14px rgba(120,170,255,0.45);
-      transform:translateY(-1px);
     }
     .nav-links a.current{
       background:rgba(255,255,255,0.22);
       box-shadow:0 0 18px rgba(120,170,255,0.55);
     }
 
-    /* Заголовок */
+    /* TITLE */
     h1{
       font-size:30px;
       margin:8px 0 4px;
@@ -70,10 +69,10 @@
       margin-bottom:26px;
     }
 
-    /* GRID ГАЛЕРЕИ */
+    /* GALLERY GRID */
     .gallery-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
       gap:18px;
     }
 
@@ -84,8 +83,7 @@
       cursor:pointer;
       background:rgba(7,18,40,0.9);
       box-shadow:0 22px 55px rgba(2,6,23,0.85);
-      transform:translateY(0);
-      transition:transform 0.30s ease, box-shadow 0.30s ease, filter 0.30s ease;
+      transition:0.3s;
     }
 
     .gallery-item img{
@@ -94,19 +92,18 @@
       display:block;
       object-fit:cover;
       transform:scale(1.02);
-      transition:transform 0.35s ease;
+      transition:0.35s;
     }
 
     .gallery-item:hover{
       transform:translateY(-4px);
       box-shadow:0 30px 70px rgba(90,140,255,0.70);
-      filter:brightness(1.05);
     }
     .gallery-item:hover img{
       transform:scale(1.06);
     }
 
-    /* LIGHTBOX – полноэкранный просмотр */
+    /* LIGHTBOX */
     .lightbox{
       position:fixed;
       inset:0;
@@ -114,7 +111,7 @@
       align-items:center;
       justify-content:center;
       z-index:1000;
-      background:rgba(2,6,23,0.92);
+      background:rgba(0,0,0,0.85);
       backdrop-filter:blur(14px);
     }
     .lightbox.active{
@@ -133,51 +130,32 @@
       position:fixed;
       top:22px;
       right:30px;
-      font-size:34px;
-      color:#f5f7ff;
-      background:transparent;
+      font-size:42px;
+      color:#ffffff;
+      background:none;
       border:none;
       cursor:pointer;
-      text-shadow:0 0 16px rgba(0,0,0,0.8);
     }
 
     .lightbox-arrow{
       position:fixed;
       top:50%;
       transform:translateY(-50%);
-      font-size:34px;
-      width:52px;
-      height:52px;
+      font-size:40px;
+      width:60px;
+      height:60px;
       border-radius:50%;
       border:1px solid rgba(255,255,255,0.5);
-      background:rgba(7,18,40,0.8);
-      color:#f5f5ff;
+      background:rgba(0,0,0,0.4);
+      color:#fff;
       cursor:pointer;
       display:flex;
       align-items:center;
       justify-content:center;
-      box-shadow:0 18px 40px rgba(0,0,0,0.85);
-      transition:background 0.25s ease, transform 0.25s ease;
-    }
-    .lightbox-arrow:hover{
-      background:rgba(32,80,220,0.95);
-      transform:translateY(-50%) scale(1.03);
     }
     .lightbox-arrow.prev{left:26px;}
     .lightbox-arrow.next{right:26px;}
 
-    @media(max-width:700px){
-      .lightbox-arrow{
-        width:44px;
-        height:44px;
-        font-size:26px;
-      }
-      .lightbox-close{
-        top:16px;
-        right:18px;
-        font-size:30px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -199,51 +177,55 @@
 
     <h1>Gallery</h1>
     <div class="subtitle">
-      A glimpse into my world — quiet moments, playful glances and elegant evenings
-      you’re welcome to share with me.
+      A glimpse into my world — quiet moments, playful glances and elegant evenings.
     </div>
 
-    <!-- СЕТКА ФОТО -->
+    <!-- 25 PHOTOS -->
     <div class="gallery-grid">
-      <!-- Каждое изображение – отдельный блок.
-           Меняй имена файлов на свои: gallery-1.jpg, gallery-2.jpg и т.д.
-           Можно добавить data-full, если хочешь отдельную большую версию. -->
 
-     <!-- ГАЛЕРЕЯ -->
-<div class="gallery-grid">
+      <!-- Just ensure files exist in your repo -->
+      <div class="gallery-item"><img src="gallery-1.jpg"  data-full="gallery-1.jpg"></div>
+      <div class="gallery-item"><img src="gallery-2.jpg"  data-full="gallery-2.jpg"></div>
+      <div class="gallery-item"><img src="gallery-3.jpg"  data-full="gallery-3.jpg"></div>
+      <div class="gallery-item"><img src="gallery-4.jpg"  data-full="gallery-4.jpg"></div>
+      <div class="gallery-item"><img src="gallery-5.jpg"  data-full="gallery-5.jpg"></div>
 
-  <div class="gallery-item"><img src="gallery-1.jpg"  data-full="gallery-1.jpg"></div>
-  <div class="gallery-item"><img src="gallery-2.jpg"  data-full="gallery-2.jpg"></div>
-  <div class="gallery-item"><img src="gallery-3.jpg"  data-full="gallery-3.jpg"></div>
-  <div class="gallery-item"><img src="gallery-4.jpg"  data-full="gallery-4.jpg"></div>
-  <div class="gallery-item"><img src="gallery-5.jpg"  data-full="gallery-5.jpg"></div>
+      <div class="gallery-item"><img src="gallery-6.jpg"  data-full="gallery-6.jpg"></div>
+      <div class="gallery-item"><img src="gallery-7.jpg"  data-full="gallery-7.jpg"></div>
+      <div class="gallery-item"><img src="gallery-8.jpg"  data-full="gallery-8.jpg"></div>
+      <div class="gallery-item"><img src="gallery-9.jpg"  data-full="gallery-9.jpg"></div>
+      <div class="gallery-item"><img src="gallery-10.jpg" data-full="gallery-10.jpg"></div>
 
-  <div class="gallery-item"><img src="gallery-6.jpg"  data-full="gallery-6.jpg"></div>
-  <div class="gallery-item"><img src="gallery-7.jpg"  data-full="gallery-7.jpg"></div>
-  <div class="gallery-item"><img src="gallery-8.jpg"  data-full="gallery-8.jpg"></div>
-  <div class="gallery-item"><img src="gallery-9.jpg"  data-full="gallery-9.jpg"></div>
-  <div class="gallery-item"><img src="gallery-10.jpg" data-full="gallery-10.jpg"></div>
+      <div class="gallery-item"><img src="gallery-11.jpg" data-full="gallery-11.jpg"></div>
+      <div class="gallery-item"><img src="gallery-12.jpg" data-full="gallery-12.jpg"></div>
+      <div class="gallery-item"><img src="gallery-13.jpg" data-full="gallery-13.jpg"></div>
+      <div class="gallery-item"><img src="gallery-14.jpg" data-full="gallery-14.jpg"></div>
+      <div class="gallery-item"><img src="gallery-15.jpg" data-full="gallery-15.jpg"></div>
 
-  <div class="gallery-item"><img src="gallery-11.jpg" data-full="gallery-11.jpg"></div>
-  <div class="gallery-item"><img src="gallery-12.jpg" data-full="gallery-12.jpg"></div>
-  <div class="gallery-item"><img src="gallery-13.jpg" data-full="gallery-13.jpg"></div>
-  <div class="gallery-item"><img src="gallery-14.jpg" data-full="gallery-14.jpg"></div>
-  <div class="gallery-item"><img src="gallery-15.jpg" data-full="gallery-15.jpg"></div>
+      <div class="gallery-item"><img src="gallery-16.jpg" data-full="gallery-16.jpg"></div>
+      <div class="gallery-item"><img src="gallery-17.jpg" data-full="gallery-17.jpg"></div>
+      <div class="gallery-item"><img src="gallery-18.jpg" data-full="gallery-18.jpg"></div>
+      <div class="gallery-item"><img src="gallery-19.jpg" data-full="gallery-19.jpg"></div>
+      <div class="gallery-item"><img src="gallery-20.jpg" data-full="gallery-20.jpg"></div>
 
-  <div class="gallery-item"><img src="gallery-16.jpg" data-full="gallery-16.jpg"></div>
-  <div class="gallery-item"><img src="gallery-17.jpg" data-full="gallery-17.jpg"></div>
-  <div class="gallery-item"><img src="gallery-18.jpg" data-full="gallery-18.jpg"></div>
-  <div class="gallery-item"><img src="gallery-19.jpg" data-full="gallery-19.jpg"></div>
-  <div class="gallery-item"><img src="gallery-20.jpg" data-full="gallery-20.jpg"></div>
+      <div class="gallery-item"><img src="gallery-21.jpg" data-full="gallery-21.jpg"></div>
+      <div class="gallery-item"><img src="gallery-22.jpg" data-full="gallery-22.jpg"></div>
+      <div class="gallery-item"><img src="gallery-23.jpg" data-full="gallery-23.jpg"></div>
+      <div class="gallery-item"><img src="gallery-24.jpg" data-full="gallery-24.jpg"></div>
+      <div class="gallery-item"><img src="gallery-25.jpg" data-full="gallery-25.jpg"></div>
+    </div>
 
-  <div class="gallery-item"><img src="gallery-21.jpg" data-full="gallery-21.jpg"></div>
-  <div class="gallery-item"><img src="gallery-22.jpg" data-full="gallery-22.jpg"></div>
-  <div class="gallery-item"><img src="gallery-23.jpg" data-full="gallery-23.jpg"></div>
-  <div class="gallery-item"><img src="gallery-24.jpg" data-full="gallery-24.jpg"></div>
-  <div class="gallery-item"><img src="gallery-25.jpg" data-full="gallery-25.jpg"></div>
+  </div>
 
-</div>
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-arrow prev" id="prevBtn">&#10094;</button>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg">
+    <button class="lightbox-arrow next" id="nextBtn">&#10095;</button>
+    <button class="lightbox-close" id="closeBtn">&times;</button>
+  </div>
 
+  <!-- SCRIPT -->
   <script>
     const items = Array.from(document.querySelectorAll('.gallery-item img'));
     const lightbox = document.getElementById('lightbox');
@@ -282,14 +264,12 @@
     nextBtn.addEventListener('click', ()=>showNext(1));
     closeBtn.addEventListener('click', closeLightbox);
 
-    // закрытие по клику вне картинки
     lightbox.addEventListener('click', (e)=>{
       if(e.target === lightbox){
         closeLightbox();
       }
     });
 
-    // закрытие по Esc + стрелки на клавиатуре
     document.addEventListener('keydown', (e)=>{
       if(!lightbox.classList.contains('active')) return;
       if(e.key === 'Escape') closeLightbox();
@@ -297,5 +277,6 @@
       if(e.key === 'ArrowLeft') showNext(-1);
     });
   </script>
+
 </body>
 </html>
